@@ -1,0 +1,51 @@
+<!--index.wxml-->
+
+
+ <view class="weui-cells__title">待完成的事项</view>
+        <view class="weui-cells weui-cells_after-title" wx:for="{{radioItems}}" wx:key="value" wx:for-index="index">
+            <radio-group bindchange="radioChange" >
+                <label wx:if="{{!item.checked}}" class="weui-cell weui-check__label" >
+                    <radio class="weui-check" value="{{index}}" checked="{{item.checked}}"/>
+
+                    <view class="weui-cell__hd weui-check__hd_in-radio">
+                      <icon class="weui-icon-radio_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                       
+                    </view>
+                    <view wx:if="{{!item.checked}}" class="weui-cell__bd" >{{item.name}}</view>
+                   
+                    <button wx:if="{{!item.checked}}" class="weui-btn mini-btn" bindtap="task" size="mini" id="{{index}}">详情</button>
+
+                    <button wx:if="{{!item.checked}}"class="weui-btn mini-btn" bindtap="delete" size="mini" id="{{index}}" type="warn">删除</button>
+                </label>
+                
+            </radio-group>
+            
+
+        </view>
+
+
+ <view class="weui-cells__title">已完成的事项</view>
+        <view class="weui-cells weui-cells_after-title"  wx:for="{{radioItems}}" wx:key="value" wx:for-index="index">
+            <radio-group bindchange="radioChange">
+                <label wx:if="{{item.checked}}"  class="weui-cell weui-check__label">
+                    <radio class="weui-check" value="{{index}}" checked="{{!item.checked}}"/>
+
+                    <view class="weui-cell__hd weui-check__hd_in-radio">
+
+                      <icon class="weui-icon-radio_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+                    
+                    </view>
+                    
+                    <view wx:if="{{item.checked}}"class="weui-cell__bd" >{{item.name}}</view>
+
+                  <button wx:if="{{item.checked}}" class="weui-btn mini-btn" bindtap="task" size="mini" id="{{index}}">详情</button>
+
+                    <button wx:if="{{item.checked}}" class="weui-btn mini-btn" bindtap="delete" size="mini" id="{{index}}" type="warn">删除</button>
+                </label>
+            </radio-group>
+        
+
+        </view>
+
+<image src="https://i.loli.net/2019/04/18/5cb87472a137a.png" class="addTask" bindtap="add"></image>
+
